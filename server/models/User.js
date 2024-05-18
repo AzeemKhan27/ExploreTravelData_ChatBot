@@ -28,10 +28,6 @@ const UserSchema = new Schema(
       type: String,
       required: false,
     },
-    accountType: {
-      type: String,
-      required: true,
-    },
     token: {
       type: String,
       required: false,

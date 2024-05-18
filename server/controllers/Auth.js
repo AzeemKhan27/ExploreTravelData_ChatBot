@@ -2,7 +2,6 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-const { passwordUpdated } = require("../mail/templates/passwordUpdate");
 
 require("dotenv").config();
 
@@ -19,6 +18,8 @@ exports.signup = async (req, res) => {
 			confirmPassword,
 			contactNumber
 		} = req.body;
+
+		console.log("BODY : ", req.body);
 		// Check if All Details are there or not
 		if (
 			!firstName ||
