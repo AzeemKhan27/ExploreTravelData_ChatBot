@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const userRoutes = require("./routes/User");
-// const profileRoutes = require("./routes/Profile");
+const dataRoutes = require("./routes/StoreData.js");
 
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
@@ -37,6 +37,7 @@ cloudinaryConnect();
 
 // routes
 app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/store", dataRoutes);
 // app.use("/api/v1/profile", profileRoutes);
 
 
