@@ -84,6 +84,8 @@ exports.login = async (req, res) => {
 		// Get email and password from request body
 		const { email, password } = req.body;
 
+		console.log("BODY ... ",req.body)
+
 		// Check if email or password is missing
 		if (!email || !password) {
 			// Return 400 Bad Request status code with error message
@@ -106,7 +108,7 @@ exports.login = async (req, res) => {
 
 		// Generate JWT token and Compare Password
 		if (await bcrypt.compare(password, user.password)) {
-			const token = jwt.sign(
+			const token = await jwt.sign(
 				{ email: user.email, id: user._id },
 				process.env.JWT_SECRET,
 				{
