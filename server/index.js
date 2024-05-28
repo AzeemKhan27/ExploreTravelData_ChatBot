@@ -3,6 +3,7 @@ const app = express();
 
 const userRoutes = require("./routes/User");
 const dataRoutes = require("./routes/StoreData.js");
+const dialogflowRoute = require("./routes/dialogflowRoute.js")
 
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
@@ -16,7 +17,14 @@ const PORT = process.env.PORT || 4000;
 
 //database connect
 database.connect();
+
 //middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    console.log(`Path ${req.path} with Method ${req.method}`);
+    next();
+});
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -38,7 +46,7 @@ cloudinaryConnect();
 // routes
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/store", dataRoutes);
-// app.use("/api/v1/profile", profileRoutes);
+app.use('/api/v1/dialogflow', dialogflowRoute.router);
 
 
 //def route
