@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+
+# build artifacts
+/build
+/dist
+
+# environment variables
+.env
+
+# editor/IDE specific files
+.vscode
+.idea
+*.sublime-workspace
+
+# log files
+*.log
+logs/
+
+# other miscellaneous files
+*.swp
+*.ds_store
+.DS_Store
