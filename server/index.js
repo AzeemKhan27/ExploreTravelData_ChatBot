@@ -4,6 +4,7 @@ const app = express();
 const userRoutes = require("./routes/User");
 const dataRoutes = require("./routes/StoreData.js");
 const dialogflowRoute = require("./routes/dialogflowRoute.js")
+const searchRoutes = require("./routes/searchRoutes.js")
 
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
@@ -47,7 +48,7 @@ cloudinaryConnect();
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/store", dataRoutes);
 app.use('/api/v1/dialogflow', dialogflowRoute.router);
-
+app.use('/api/v1/google', searchRoutes);
 
 //def route
 
